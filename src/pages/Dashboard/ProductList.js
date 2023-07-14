@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import loadProductData from "../../redux/thunk/product/fetchProducts";
 
 const ProductList = () => {
-  const [products, setProducts] = useState([]);
-
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.product.products);
   useEffect(() => {
-    fetch("http://localhost:5000/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data.data));
-  });
+    dispatch(loadProductData());
+  }, [dispatch]);
+  // const [products, setProducts] = useState([]);
+
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/products")
+  //     .then((res) => res.json())
+  //     .then((data) => setProducts(data.data));
+  // });
 
   return (
     <div class='flex flex-col justify-center items-center h-full w-full '>
@@ -73,14 +80,12 @@ const ProductList = () => {
                           fill='none'
                           stroke='currentColor'
                           viewBox='0 0 24 24'
-                          xmlns='http://www.w3.org/2000/svg'
-                        >
+                          xmlns='http://www.w3.org/2000/svg'>
                           <path
                             stroke-linecap='round'
                             stroke-linejoin='round'
                             stroke-width='2'
-                            d='M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16'
-                          ></path>
+                            d='M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16'></path>
                         </svg>
                       </button>
                     </div>
