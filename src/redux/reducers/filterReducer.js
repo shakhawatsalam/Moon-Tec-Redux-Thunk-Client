@@ -5,7 +5,7 @@ export const initailState = {
     brands: [],
     stock: false,
   },
-  keyword: "stock",
+  keyword: "",
 };
 
 export const filterReducer = (state = initailState, action) => {
@@ -36,7 +36,7 @@ export const filterReducer = (state = initailState, action) => {
         filters: {
           ...state.filters,
           stock: !state.filters.stock,
-        }
+        },
       };
     default:
       return state;
