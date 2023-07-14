@@ -21,6 +21,7 @@ export const addProduct = (product) => {
   };
 };
 
+
 export const removeProduct = (id) => {
   return {
     type: REMOVE_PRODUCT,

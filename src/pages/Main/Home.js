@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ProductCard from "../../components/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleBrands, toggleStock } from "../../redux/actions/filterActions";
-import { loadProduct } from "../../redux/actions/productAction";
+
 import loadProductData from "../../redux/thunk/product/fetchProducts";
 
 const Home = () => {

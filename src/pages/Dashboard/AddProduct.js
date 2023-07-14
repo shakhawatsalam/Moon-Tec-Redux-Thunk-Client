@@ -1,8 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import addProductData from "../../redux/thunk/product/addProductData";
 
 const AddProduct = () => {
   const { register, handleSubmit } = useForm();
+  const dispatch = useDispatch();
 
   const submit = (data) => {
     const product = {
@@ -18,16 +21,15 @@ const AddProduct = () => {
       ],
       spec: [],
     };
-
-    console.log(product);
+   
+    dispatch(addProductData(product));
   };
 
   return (
     <div className='flex justify-center items-center h-full '>
       <form
         className='shadow-lg p-10 rounded-md flex flex-wrap gap-3 max-w-3xl justify-between bg-white'
-        onSubmit={handleSubmit(submit)}
-      >
+        onSubmit={handleSubmit(submit)}>
         <div className='flex flex-col w-full max-w-xs'>
           <label className='mb-2' htmlFor='model'>
             Model
@@ -134,8 +136,7 @@ const AddProduct = () => {
         <div className='flex justify-between items-center w-full'>
           <button
             className=' px-4 py-3 bg-indigo-500 rounded-md font-semibold text-white text-lg disabled:bg-gray-500'
-            type='submit'
-          >
+            type='submit'>
             Submit
           </button>
         </div>
